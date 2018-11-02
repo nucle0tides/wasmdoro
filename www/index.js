@@ -1,4 +1,4 @@
-import { WasmdoroTimer } from "./wasm_doro";
+import { WasmdoroTimer } from "wasmdoro";
 
 const timer = WasmdoroTimer.new();
 const rendered_timer = document.getElementById('timer');
@@ -34,8 +34,8 @@ reset_button.addEventListener('click', () => {
     clearInterval(countdown);
     countdown = null;
 
-    timer.reset();
-    timer.render();
+    timer.reset_pomodoro();
+    document.getElementById('timer').innerHTML = timer.render();
 
     start_button.innerHTML = 'Start';
     start_button.className = 'btn-large green darken-1';
@@ -44,13 +44,4 @@ reset_button.addEventListener('click', () => {
 });
 
 rendered_timer.innerHTML = timer.render();
-
-// const countdown = setInterval(() => {
-//   if(timer.times_up()) {
-//     clearInterval(countdown);
-//     timer.successful_pomodoro();
-//   }
-//   document.getElementById('timer').innerHTML = timer.render();
-//   timer.decrement_time();
-// }, 1000);
 
