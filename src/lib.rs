@@ -48,6 +48,12 @@ impl WasmdoroTimer {
         self.pomodoro_count
     }
 
+    pub fn total_time(&self) -> String {
+        let num_mins = self.total_time.num_minutes();
+        let num_seconds = self.total_time.num_seconds() - (60 * num_mins);
+        format!("{:02}:{:02}", num_mins, num_seconds)
+    }
+
     pub fn inprogress_pomodoro(&self) -> bool {
         self.inprogress_pomodoro
     }

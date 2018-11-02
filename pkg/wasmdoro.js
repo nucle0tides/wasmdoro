@@ -83,6 +83,21 @@ export class WasmdoroTimer {
         return wasm.wasmdorotimer_pomodoro_count(this.ptr);
     }
     /**
+    * @returns {string}
+    */
+    total_time() {
+        const retptr = globalArgumentPtr();
+        wasm.wasmdorotimer_total_time(retptr, this.ptr);
+        const mem = getUint32Memory();
+        const rustptr = mem[retptr / 4];
+        const rustlen = mem[retptr / 4 + 1];
+
+        const realRet = getStringFromWasm(rustptr, rustlen).slice();
+        wasm.__wbindgen_free(rustptr, rustlen * 1);
+        return realRet;
+
+    }
+    /**
     * @returns {boolean}
     */
     inprogress_pomodoro() {

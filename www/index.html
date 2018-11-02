@@ -27,12 +27,24 @@
   <body>
     <div class="container">
       <div class="timer-container">
-        <h1 class="center" id="timer"></h1>
-        <a class="btn-large green darken-1" id="start">Start</a>
-        <a class="btn-large grey" id="reset">Reset</a>
+        <div>
+          <h1 class="center" id="timer"></h1>
+          <a class="btn-large green darken-1" id="start">Start</a>
+          <a class="btn-large grey" id="reset">Reset</a>
+          <button data-target="stats" class="btn-large modal-trigger">Stats</button>
+        </div>
+        <div>
+          <div id="stats" class="modal bottom-sheet">
+            <div class="modal-content">
+              <h4>Pomodoro Stats</h4>
+              <div><strong>Pomodoros Completed:</strong> <span id="pomos-completed"></span></div>
+              <div><strong>Total Time:</strong> <span id="total-time"></span</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script src='./bootstrap.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
   </body>
 </html>

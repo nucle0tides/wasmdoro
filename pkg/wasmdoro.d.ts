@@ -12,6 +12,8 @@ static  new(): WasmdoroTimer;
 
  pomodoro_count(): number;
 
+ total_time(): string;
+
  inprogress_pomodoro(): boolean;
 
  times_up(): boolean;
