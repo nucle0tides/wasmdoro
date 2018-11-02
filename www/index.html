@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+     html {
+       background: url('what-the-hex.png') repeat;
+     }
+     .container {
+       display: grid;
+       grid-template-columns: repeat(4, auto);
+       grid-gap: 10px;
+       grid-auto-rows: 200px;
+       grid-template-areas: 
+         ". . . ."
+         ". a a ."
+         ". a a ."
+         ". . . .";
+     }
+     .timer-container {
+       grid-area: a;
+       align-self: center;
+       justify-self: center;
+     }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="timer-container">
+        <h1 class="center" id="timer"></h1>
+        <a class="btn-large green darken-1" id="start">Start</a>
+        <a class="btn-large grey" id="reset">Reset</a>
+      </div>
+    </div>
+    <script src='./bootstrap.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+</html>
