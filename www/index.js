@@ -8,9 +8,12 @@ const reset_button = document.getElementById('reset');
 let countdown = null,
     interval = 1000;
 const statsModal = document.getElementById('stats');
-const statsModalInstance = Modal.init(statsModal, {onOpenStart: () => {
+Modal.init(statsModal, {onOpenStart: () => {
   updateStats();
 }});
+const infoModal = document.getElementById('info-modal');
+console.log(infoModal);
+Modal.init(infoModal, {});
 const alarm = new Audio('assets/audio/alarm.wav');
 
 start_button.addEventListener('click', () => {
@@ -23,13 +26,13 @@ start_button.addEventListener('click', () => {
     countdown = setInterval(() => {
       renderTimer();
       if (timer.times_up()) {
-        alarm.play();
         timer.successful_pomodoro();
         enableStart();
         renderTimer();
         updateStats();
         clearInterval(countdown);
         countdown = null;
+        alarm.play();
         return;
       }
       timer.decrement_time();

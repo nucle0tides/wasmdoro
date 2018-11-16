@@ -2,6 +2,7 @@
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
      html {
        background: url('what-the-hex.png') repeat;
@@ -21,6 +22,12 @@
        grid-area: a;
        align-self: center;
        justify-self: center;
+     }
+
+     #info-container {
+       position: absolute;
+       bottom: 25;
+       right: 25;       
      }
     </style>
   </head>
@@ -43,6 +50,20 @@
           </div>
         </div>
       </div>
+    </div>
+    <div id="info-container">
+      <a class="btn-floating btn-small grey modal-trigger" id="info-button" data-target="info-modal">
+        <i class="material-icons">info</i>
+      </a>
+      <div id="info-modal" class="modal">
+        <div class="modal-content">
+          Created by <a href="http://gabbyortman.com/">Gabby Ortman</a>.
+          <br />
+          Audio created by <a href="https://freesound.org/people/ZyryTSounds/sounds/219244/">ZyryTSounds</a>.
+          <br />
+          Background created by <a href="https://www.toptal.com/designers/subtlepatterns/what-the-hex/">Angel Micevski</a>.
+        </div>
+      </div>      
     </div>
     <script src='./bootstrap.js'></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
