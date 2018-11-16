@@ -7,28 +7,31 @@ const start_button = document.getElementById('start');
 const reset_button = document.getElementById('reset');
 let countdown = null,
     interval = 1000;
-const elems = document.querySelectorAll('.modal');
-const instances = Modal.init(elems, {});
-
-
-document.getElementById('pomos-completed').innerHTML = timer.pomodoro_count();
-document.getElementById('total-time').innerHTML = timer.total_time();
+const statsModal = document.getElementById('stats');
+const statsModalInstance = Modal.init(statsModal, {onOpenStart: () => {
+  updateStats();
+}});
+const alarm = new Audio('assets/audio/alarm.wav');
 
 start_button.addEventListener('click', () => {
   if (!timer.inprogress_pomodoro()) {
     if (countdown !== null) return;
 
-    start_button.className = 'btn-large disabled';
+    timer.start_pomodoro();
+    disableStart();
 
     countdown = setInterval(() => {
+      renderTimer();
       if (timer.times_up()) {
+        alarm.play();
+        timer.successful_pomodoro();
+        enableStart();
+        renderTimer();
+        updateStats();
         clearInterval(countdown);
         countdown = null;
-        timer.successful_pomodoro();
         return;
       }
-      timer.start_pomodoro();
-      document.getElementById('timer').innerHTML = timer.render();
       timer.decrement_time();
     }, interval);
   }
@@ -39,15 +42,29 @@ reset_button.addEventListener('click', () => {
   if (timer.inprogress_pomodoro()) {
     clearInterval(countdown);
     countdown = null;
-
     timer.reset_pomodoro();
-    document.getElementById('timer').innerHTML = timer.render();
-
-    start_button.innerHTML = 'Start';
-    start_button.className = 'btn-large green darken-1';
+    renderTimer();
+    enableStart();
   }
   return;
 });
 
-rendered_timer.innerHTML = timer.render();
+const disableStart = () => {
+  start_button.className = 'btn-large disabled';
+};
+
+const enableStart = () => {
+  start_button.className = 'btn-large green darken-1';
+};
+
+const renderTimer = () => {
+  rendered_timer.innerHTML = timer.render();
+};
+
+const updateStats = () => {
+  document.getElementById('pomos-completed').innerHTML = timer.pomodoro_count();
+  document.getElementById('total-time').innerHTML = timer.total_time();
+};
+
+renderTimer();
 

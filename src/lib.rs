@@ -41,7 +41,7 @@ impl WasmdoroTimer {
     pub fn successful_pomodoro(&mut self) {
         self.pomodoro_count += 1;
         self.total_time = self.total_time + self.default_pomodoro_time;
-        self.inprogress_pomodoro = false;
+        self.reset_pomodoro()
     }
 
     pub fn pomodoro_count(&self) -> i32 {
